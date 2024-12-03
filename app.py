@@ -97,9 +97,9 @@ with st.sidebar:
 # Render wallpaper
 col1, col2 = st.columns(2)
 
-option = st.selectbox("Expand", ["Select an Option", "Render Background Image", "Upload and Display Image"])
+option = st.selectbox("Background Image", ["Select an Option", "Generate Geometric Design", "Upload Custom Image"])
 
-if option == "Render Background Image":
+if option == "Generate Geometric Design":
     with st.expander('See Rendered Wallpaper', expanded=True):
         st.subheader('Rendered Wallpaper')
         # Generate RGB color code from selected colors
@@ -139,7 +139,7 @@ if option == "Render Background Image":
 
 
 
-elif option == "Upload and Display Image":
+elif option == "Upload Custom Image":
     # File uploader widget
     uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"], key="unique_uploader_key")
     
@@ -185,13 +185,6 @@ elif option == "Upload and Display Image":
                 st.image(img)
                 downloadable_thumbnail = convert_image(img)
                 st.download_button("Download image", downloadable_thumbnail, "thumbnail.png", "image/png")
-
-
-
-
-    else:
-        st.write("Please upload an image to save it.")
-
 
 # Remove background from photo
 if image_upload:
