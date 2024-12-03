@@ -18,9 +18,9 @@ img_path = 'renders'
 
 # Initialize session state
 if 'color1' not in st.session_state:
-    st.session_state.color1 = '#06D0DE'
+    st.session_state.color1 = '#FBEAEB'
 if 'color2' not in st.session_state:
-    st.session_state.color2 = '#FE31CD'
+    st.session_state.color2 = '#2F3C7E'
 
 # Generate a random HEX color
 def generate_random_hex_color():
