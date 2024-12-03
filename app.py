@@ -87,9 +87,13 @@ with st.sidebar:
         image_horizontal_placement = st.slider('Horizontal placement', -1000, 1000, 0, step=25)
 
     # Add Streamlit logo
-    st.subheader('Streamlit logo')
+    st.subheader('Logo upload')
     with st.expander('Expand'):
-        streamlit_logo = st.checkbox('Add Streamlit logo', value=True, key='streamlit_logo')
+        uploaded_logo = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"], key="unique_uploader_key_2")
+        if uploaded_logo is not None:
+            save_path = f"renders/{uploaded_logo.name}"
+            with open(save_path, "wb") as file:
+                file.write(uploaded_logo.getbuffer())
         logo_width = st.slider('Image width', 0, 500, 180, step=10)
         logo_vertical_placement = st.slider('Vertical placement', 0, 1000, 900, step=10)
         logo_horizontal_placement = st.slider('Horizontal placement', 0, 1800, 20, step=10)
@@ -127,8 +131,9 @@ if option == "Generate Geometric Design":
             img_edit.text((85,340), title_text_1, (255, 255, 255), font=title_font_1)
             img_edit.text((85,550), title_text_2, (255, 255, 255), font=title_font_2)
         
-            if streamlit_logo:
-                logo_img = Image.open('streamlit-logo.png').convert('RGBA')
+            if uploaded_logo:
+                logo_path = f"renders/{uploaded_logo.name}"
+                logo_img = Image.open(logo_path).convert('RGBA')
                 logo_img.thumbnail([sys.maxsize, logo_width], Resampling.LANCZOS)
                 img.paste(logo_img, (logo_horizontal_placement, logo_vertical_placement), logo_img)
             
@@ -141,7 +146,7 @@ if option == "Generate Geometric Design":
 
 elif option == "Upload Custom Image":
     # File uploader widget
-    uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"], key="unique_uploader_key")
+    uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"], key="unique_uploader_key_1")
     
     if uploaded_file is not None:       
         # Save the image to the 'render' folder
@@ -176,8 +181,9 @@ elif option == "Upload Custom Image":
                 img_edit.text((85,340), title_text_1, (255, 255, 255), font=title_font_1)
                 img_edit.text((85,550), title_text_2, (255, 255, 255), font=title_font_2)
         
-                if streamlit_logo:
-                    logo_img = Image.open('streamlit-logo.png').convert('RGBA')
+                if uploaded_logo:
+                    logo_path = f"renders/{uploaded_logo.name}"
+                    logo_img = Image.open(logo_path).convert('RGBA')
                     logo_img.thumbnail([sys.maxsize, logo_width], Resampling.LANCZOS)
                     img.paste(logo_img, (logo_horizontal_placement, logo_vertical_placement), logo_img)
             
