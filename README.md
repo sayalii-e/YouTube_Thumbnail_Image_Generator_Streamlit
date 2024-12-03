@@ -19,6 +19,6 @@ The YouTube Thumbnail Generator is a web application designed for content creato
 - Image Upload: Overlay custom images, resize, reposition, and remove backgrounds.
 - Logo Integration: Add logos with adjustable size and position.
 
-## Demo
+## Screenshot
 ![yt-thum](https://github.com/user-attachments/assets/2a082004-5bca-49f3-8838-cdfa478b837e)
 ![yt2](https://github.com/user-attachments/assets/f6a87a50-60a1-4c7a-8fa6-f31726d1d18c)
